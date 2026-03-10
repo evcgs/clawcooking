@@ -84,7 +84,7 @@ openclaw skills logs <skill-name>
 openclaw skills reinstall <skill-name>
 ```
 
-### Q2：怎么添加自定义技能？
+### Q2：怎么添加用户自定义技能？
 A：
 1. 在 `recipes/seasonings/` 目录下创建新的技能包目录
 2. 参考已有技能包的结构编写配置和文档

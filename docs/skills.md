@@ -7,17 +7,17 @@
 | 📝 办公自动化 | 文档处理、格式转换、自动排版、邮件生成等 | recipes/seasonings/office-pack/ |
 | 📊 数据处理 | 数据分析、统计、可视化、SQL查询、报表生成等 | recipes/seasonings/data-pack/ |
 | 🔒 安全运维 | 系统检查、备份、安全扫描、日志分析等 | recipes/seasonings/security-pack/ |
-## 自定义技能安装
-### 一键安装自定义技能
+## 用户自定义技能安装
+### 一键安装用户自定义技能
 项目提供了一键安装脚本，可以快速安装你本地开发的创新技能：
 ```bash
-# 安装自定义技能
-./scripts/skill-install.sh <本地技能包路径>
+# 安装用户自定义技能
+./scripts/skill-install.sh <用户本地技能包路径>
 # 示例：安装本地的my-custom-skill技能
 ./scripts/skill-install.sh ~/my-custom-skill
 ```
 ### 技能包规范
-自定义技能包需要符合以下结构：
+用户自定义技能包需要符合以下结构：
 ```
 my-custom-skill/
 ├── SKILL.md          # 技能说明文档（必填）
@@ -26,7 +26,7 @@ my-custom-skill/
 └── scripts/          # 技能相关脚本（可选）
 ```
 ### 技能部署
-安装完自定义技能后，运行部署脚本即可自动加载：
+安装完用户自定义技能后，运行部署脚本即可自动加载：
 ```bash
 ./scripts/deploy.sh
 ```
