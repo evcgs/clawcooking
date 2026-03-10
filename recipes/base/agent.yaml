@@ -1,0 +1,94 @@
+# 智能体通用配置模板
+# 所有智能体的默认配置，可以在各个智能体的配置文件中覆盖
+
+# 通用配置
+common:
+  # 智能体运行模式：auto（自动执行）/ manual（人工确认）
+  mode: "auto"
+  # 最大思考步数
+  max_steps: 10
+  # 是否启用工具调用
+  tool_calling_enabled: true
+  # 最大工具调用次数
+  max_tool_calls: 5
+  # 上下文窗口大小（消息数量）
+  context_window_size: 20
+  # 是否使用长期记忆
+  long_term_memory_enabled: true
+  # 记忆检索结果数量
+  memory_search_results: 5
+
+# 权限配置
+permissions:
+  # 默认允许的工具
+  allowed_tools:
+    - "memory_search"
+    - "memory_get"
+    - "read"
+    - "write"
+    - "edit"
+    - "web_search"
+    - "web_fetch"
+  # 默认禁止的工具
+  denied_tools:
+    - "exec"
+    - "process"
+    - "file_delete"
+  # 文件访问白名单
+  allowed_paths:
+    - "~/.openclaw/workspace"
+  # 文件访问黑名单
+  denied_paths:
+    - "/etc"
+    - "/root"
+    - "~/.ssh"
+    - "~/.aws"
+    - "~/.config"
+
+# 模型配置
+model:
+  # 默认使用的模型ID，对应model.yaml中的配置
+  model_id: "custom-ark-cn-beijing-volces-com/ark-code-latest"
+  # 温度参数
+  temperature: 0.7
+  # 最大生成长度
+  max_tokens: 2048
+  # 核采样参数
+  top_p: 0.95
+  # 频率惩罚
+  frequency_penalty: 0.0
+  # 存在惩罚
+  presence_penalty: 0.0
+
+# 输出配置
+output:
+  # 输出语言：zh-CN（中文）/ en-US（英文）
+  language: "zh-CN"
+  # 输出格式：markdown / plain_text
+  format: "markdown"
+  # 是否显示思考过程
+  show_thinking: false
+  # 是否显示工具调用过程
+  show_tool_calls: true
+
+# 错误处理配置
+error_handling:
+  # 最大重试次数
+  max_retries: 3
+  # 重试间隔（秒）
+  retry_interval: 1
+  # 错误时是否通知用户
+  notify_on_error: true
+  # 错误时是否回滚操作
+  rollback_on_error: true
+
+# 日志配置
+logging:
+  # 是否启用日志
+  enabled: true
+  # 日志级别：debug / info / warn / error
+  level: "info"
+  # 是否记录到文件
+  log_to_file: true
+  # 日志文件路径
+  log_path: "~/.openclaw/logs/agents"

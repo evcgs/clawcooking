@@ -1,0 +1,44 @@
+# 模型配置模板
+# 填入你的模型API配置，至少配置一个可用模型
+
+# 默认使用的模型
+default_model: "custom-ark-cn-beijing-volces-com/ark-code-latest"
+
+# 模型列表，支持配置多个模型
+models:
+  # 字节跳动 Ark 模型（推荐，默认配置）
+  - id: "custom-ark-cn-beijing-volces-com/ark-code-latest"
+    name: "字节跳动 CodeLlama"
+    provider: "ark"
+    api_key: "your-ark-api-key"  # 替换为你的字节跳动Ark API密钥
+    base_url: "https://ark.cn-beijing.volces.com/api/coding/v3"
+    max_tokens: 8192
+    temperature: 0.7
+    context_window: 200000
+
+  # OpenAI GPT 模型示例
+  - id: "gpt-4o"
+    name: "OpenAI GPT-4o"
+    provider: "openai"
+    api_key: "your-openai-api-key"  # 替换为你的API密钥
+    base_url: "https://api.openai.com/v1"
+    max_tokens: 4096
+    temperature: 0.7
+
+  # 豆包模型示例
+  - id: "doubao-pro-4k"
+    name: "豆包4.0"
+    provider: "openai"
+    api_key: "your-doubao-api-key"  # 替换为你的API密钥
+    base_url: "https://ark.cn-beijing.volces.com/api/v3"
+    max_tokens: 4096
+    temperature: 0.7
+
+  # 本地 Ollama 模型示例
+  - id: "llama3:8b"
+    name: "Llama 3 8B"
+    provider: "ollama"
+    base_url: "http://localhost:11434/v1"
+    api_key: "ollama"  # 本地模型不需要真实密钥，随便填即可
+    max_tokens: 2048
+    temperature: 0.8

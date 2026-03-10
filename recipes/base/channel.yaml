@@ -1,0 +1,58 @@
+# 渠道配置模板
+# 配置你需要使用的交互渠道，至少配置一个
+
+# 飞书配置（推荐）
+feishu:
+  enabled: true
+  app_id: "cli_a9111c82cef8dbce"        # 飞书主应用app_id
+  app_secret: "your-main-app-secret"         # 替换为你的app_secret
+  encrypt_key: "your-encrypt-key"       # 替换为飞书事件订阅的加密密钥
+  verification_token: "your-verification-token" # 替换为飞书事件订阅的验证令牌
+  allowed_users:
+    - "your-user-open-id"               # 替换为你的飞书用户open_id，只允许你自己访问
+  bot_name: "龙虾小厨"
+  bot_avatar: "https://raw.githubusercontent.com/pandonglin/ccg/main/assets/logo.png"
+
+  # 多应用配置（可选）
+  sub_apps:
+    doc:
+      app_id: "cli_a92e72365878dcca"    # Doc智能体专用app_id
+      app_secret: "your-doc-secret"     # 替换为Doc应用的app_secret
+    calendar:
+      app_id: "cli_a92e72dd16b8dcc7"    # Calendar智能体专用app_id
+      app_secret: "your-calendar-secret" # 替换为Calendar应用的app_secret
+    ba:
+      app_id: "cli_a92523f1ed799bc6"    # BA智能体专用app_id
+      app_secret: "your-ba-secret"     # 替换为BA应用的app_secret
+    data:
+      app_id: "cli_a9251d4904f85bc9"    # Data智能体专用app_id
+      app_secret: "your-data-secret"     # 替换为Data应用的app_secret
+
+# 微信配置（可选）
+wechat:
+  enabled: false
+  app_id: "your-wechat-app-id"
+  app_secret: "your-wechat-app-secret"
+  token: "your-wechat-token"
+  encoding_aes_key: "your-aes-key"
+  allowed_users:
+    - "your-wechat-id"
+
+# Telegram 配置（可选）
+telegram:
+  enabled: false
+  bot_token: "your-telegram-bot-token"
+  allowed_users:
+    - "your-telegram-id"
+
+# Discord 配置（可选）
+discord:
+  enabled: false
+  bot_token: "your-discord-bot-token"
+  allowed_users:
+    - "your-discord-id"
+
+# CLI 渠道（默认开启，本地命令行交互）
+cli:
+  enabled: true
+  prompt: "🦞 龙虾小厨 > "

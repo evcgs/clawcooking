@@ -1,0 +1,106 @@
+# 安全配置模板
+# 安全第一！请务必正确配置以下内容，避免数据泄露和误操作
+
+# 授权配置
+authorization:
+  # 是否启用授权
+  enabled: true
+  # 允许访问的用户白名单，只有列表中的用户可以使用
+  allowed_users:
+    - "your-user-open-id"  # 替换为你的用户ID
+  # 超级管理员用户，可以执行所有操作
+  admin_users:
+    - "your-user-open-id"  # 替换为你的用户ID
+  # 风险等级配置
+  risk_levels:
+    # 低风险操作：自动执行，不需要确认
+    low:
+      - "file_read"
+      - "web_search"
+      - "doc_read"
+      - "list_blocks"
+      - "calendar_read"
+    # 中风险操作：执行后自动报备
+    medium:
+      - "file_write"
+      - "command_exec"
+      - "doc_write"
+      - "doc_append"
+      - "sheet_write"
+    # 高风险操作：必须人工确认后才能执行
+    high:
+      - "file_delete"
+      - "command_exec_dangerous"
+      - "doc_delete"
+      - "remote_access"
+      - "system_command"
+
+# 审计日志配置
+audit:
+  # 是否启用审计日志
+  enabled: true
+  # 日志保留天数
+  retention_days: 90
+  # 需要记录的操作类型
+  log_actions:
+    - "file_read"
+    - "file_write"
+    - "file_delete"
+    - "command_exec"
+    - "doc_read"
+    - "doc_write"
+    - "doc_delete"
+    - "tool_call"
+    - "agent_spawn"
+
+# 敏感信息检测配置
+sensitive_detection:
+  # 是否启用敏感信息检测
+  enabled: true
+  # 检测到敏感信息时的操作：block（阻止）/ warn（警告）/ log（仅记录）
+  action: "block"
+  # 敏感信息类型
+  sensitive_types:
+    - "api_key"
+    - "password"
+    - "private_key"
+    - "id_card"
+    - "phone_number"
+    - "email"
+    - "bank_card"
+
+# 智能体通信配置
+agent_communication:
+  # 是否允许智能体之间通信
+  enabled: true
+  # 通信权限矩阵
+  allowed_communications:
+    # PM大厨可以和谁通信
+    "pm-chef": ["ba-chef", "doc-chef", "ops-chef"]
+    # BA大厨可以和谁通信
+    "ba-chef": ["pm-chef", "data-chef", "doc-chef"]
+    # Data大厨可以和谁通信
+    "data-chef": ["ba-chef", "code-chef", "doc-chef"]
+    # Code大厨可以和谁通信
+    "code-chef": ["data-chef", "ops-chef"]
+    # Doc大厨可以和谁通信
+    "doc-chef": ["pm-chef", "ba-chef", "data-chef", "ops-chef"]
+    # Ops大厨可以和谁通信
+    "ops-chef": ["pm-chef", "code-chef", "doc-chef"]
+
+# 数据备份配置
+backup:
+  # 是否启用自动备份
+  enabled: true
+  # 备份频率：daily（每日）/ weekly（每周）/ monthly（每月）
+  frequency: "daily"
+  # 备份保留份数
+  retention_count: 7
+  # 备份存储路径
+  path: "~/.openclaw/backup/clawcook"
+  # 需要备份的内容
+  backup_items:
+    - "config"
+    - "memory"
+    - "sessions"
+    - "workspace"
