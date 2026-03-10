@@ -20,8 +20,8 @@
 ### 1. 准备食材
 ```bash
 # 克隆项目
-git clone https://github.com/pandonglin/ccg.git
-cd ccg
+git clone https://github.com/evcgs/clawcooking.git
+cd clawcooking
 ```
 
 ### 2. 处理食材
