@@ -29,9 +29,10 @@ cd clawcooking
 # 一键安装依赖和环境
 ./scripts/install.sh
 
-# 填入2个必填配置
-# ① 飞书app_secret ② 你的用户ID
-# 其他配置全部已经帮你预配置好了
+# 填写配置（所有配置需要自行填写，无预置内容）
+# ① 在 recipes/base/channel.yaml 中填写7个飞书应用的appId和appSecret
+# ② 在 recipes/base/model.yaml 中填写你的大模型API密钥
+# ③ 在 recipes/base/agent.yaml 中填写你的用户ID
 ```
 
 ### 3. 出锅享用
