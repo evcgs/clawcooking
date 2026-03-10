@@ -31,5 +31,7 @@ my-custom-skill/
 ./scripts/deploy.sh
 ```
 部署完成后，所有智能体就可以自动调用新安装的技能了~
+> ℹ️ 安全提示：安装技能不会覆盖主Agent记忆、对话历史和现有配置，只会新增技能文件，不影响原有数据。
+> 详细安全说明请查看：[安全与数据说明](security.md)
 ## 技能市场
 更多官方技能可以从OpenClaw技能商店下载：https://clawhub.com

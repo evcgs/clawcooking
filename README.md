@@ -77,6 +77,8 @@ cd clawcooking
 ./scripts/skill-install.sh <用户本地技能包路径>
 ```
 详细说明请查看：[技能包管理文档](docs/skills.md)
+> ℹ️ 安全提示：安装技能不会覆盖主Agent记忆、对话历史和现有配置，只会新增技能文件，不影响原有数据。
+> 详细安全说明请查看：[安全与数据说明](docs/security.md)
 ## 📁 项目结构
 ```
 ccg/
