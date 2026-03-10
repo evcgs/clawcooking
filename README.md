@@ -141,12 +141,12 @@ ccg/
 ## 💬 交流与支持
 ### 微信交流群
 扫码加入用户交流群，获取最新更新、使用技巧和技术支持：
-![微信群二维码](assets/wxq.jpg)
+<img src="assets/wxq.jpg" alt="微信群二维码" width="200" height="200">
 > （如果群二维码已过期，请添加下方微信备注「CCG+来意」拉群）
 
 ### 联系我们
 - **微信**：添加微信，备注「CCG+来意」
-![个人微信](assets/wx.png)
+<img src="assets/wx.png" alt="个人微信" width="200" height="200">
 
 ## 🤝 贡献
 欢迎提交 Issue 和 PR！我们一起完善这个龙虾烹饪手册，让更多人吃上美味的AI龙虾。
