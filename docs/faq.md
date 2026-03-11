@@ -65,7 +65,27 @@ A：
 ### Q3：智能体之间可以通信吗？
 A：默认已经配置了智能体之间的通信权限，你可以在 `security.yaml` 中自定义通信规则。
 
-### Q4：怎么添加自定义智能体？
+### Q4：怎么修改智能体的显示名称？
+A：
+```bash
+# 编辑智能体配置文件
+vim ~/.openclaw/config/agent.yaml
+
+# 修改agent_names字段下对应的名称，例如：
+agent_names:
+  pm_chef: "项目经理"
+  ba_chef: "业务分析师"
+  data_chef: "数据分析师"
+  code_chef: "开发工程师"
+  doc_chef: "文档工程师"
+  ops_chef: "运营专员"
+
+# 重新部署生效
+./scripts/deploy.sh
+```
+所有智能体名称都支持自定义，修改后会在所有界面中显示新名称。
+
+### Q5：怎么添加自定义智能体？
 A：
 1. 在 `recipes/chefs/` 目录下创建新的智能体目录
 2. 参考已有智能体的结构编写配置和文档

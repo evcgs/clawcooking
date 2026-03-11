@@ -77,6 +77,25 @@ cd clawcooking
 ./scripts/skill-install.sh <用户本地技能包路径>
 ```
 详细说明请查看：[技能包管理文档](docs/skills.md)
+
+### 智能体名称自定义
+支持自定义所有智能体的显示名称，修改后重新部署即可生效：
+```bash
+# 编辑智能体配置文件
+vim ~/.openclaw/config/agent.yaml
+
+# 修改agent_names字段下的对应名称
+agent_names:
+  pm_chef: "项目管理大师"
+  ba_chef: "业务分析专家"
+  data_chef: "数据科学家"
+  code_chef: "开发工程师"
+  doc_chef: "文档专员"
+  ops_chef: "运营助手"
+
+# 重新部署生效
+./scripts/deploy.sh
+```
 > ℹ️ 安全提示：安装技能不会覆盖主Agent记忆、对话历史和现有配置，只会新增技能文件，不影响原有数据。
 > 详细安全说明请查看：[安全与数据说明](docs/security.md)
 ## 📁 项目结构

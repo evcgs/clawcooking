@@ -18,6 +18,21 @@ common:
   # 记忆检索结果数量
   memory_search_results: 5
 
+# 智能体名称配置（可自定义）
+agent_names:
+  # 项目管理智能体
+  pm_chef: "PM大厨"
+  # 业务分析智能体
+  ba_chef: "BA大厨"
+  # 数据分析智能体
+  data_chef: "Data大厨"
+  # 编码开发智能体
+  code_chef: "Code大厨"
+  # 文档处理智能体
+  doc_chef: "Doc大厨"
+  # 效能运营智能体
+  ops_chef: "Ops大厨"
+
 # 权限配置
 permissions:
   # 默认允许的工具

@@ -101,12 +101,15 @@ mkdir -p "${OPENCLAW_CONFIG_DIR}/skills/custom"
 mkdir -p "${OPENCLAW_CONFIG_DIR}/agents/custom"
 mkdir -p "${OPENCLAW_CONFIG_DIR}/workspace/memory"
 mkdir -p "${OPENCLAW_CONFIG_DIR}/backup/clawcook"
+mkdir -p "${OPENCLAW_CONFIG_DIR}/config"
+mkdir -p "${OPENCLAW_CONFIG_DIR}/config/channels"
 
 # 复制基础配置
 echo "⚙️  复制基础配置模板..."
 cp -n "${CLAWCOOK_HOME}/recipes/base/model.yaml" "${OPENCLAW_CONFIG_DIR}/config/models.yaml"
 cp -n "${CLAWCOOK_HOME}/recipes/base/channel.yaml" "${OPENCLAW_CONFIG_DIR}/config/channels/"
 cp -n "${CLAWCOOK_HOME}/recipes/base/security.yaml" "${OPENCLAW_CONFIG_DIR}/config/security.yaml"
+cp -n "${CLAWCOOK_HOME}/recipes/base/agent.yaml" "${OPENCLAW_CONFIG_DIR}/config/agent.yaml"
 
 # 设置权限
 echo "🔒 设置文件权限..."
@@ -116,8 +119,8 @@ chmod 700 "${OPENCLAW_CONFIG_DIR}/backup/clawcook"
 # 离线模式跳过网络操作
 if [ "$OFFLINE" = false ]; then
     echo "🌐 更新 OpenClaw 技能和智能体索引..."
-    openclaw skills update
-    openclaw agents update
+    openclaw skills update --all || echo "⚠️  技能索引更新失败，跳过"
+    openclaw agents update --all || echo "⚠️  智能体索引更新失败，跳过"
 fi
 
 # 安装完成
@@ -128,6 +131,7 @@ echo "📝 接下来需要完成以下配置："
 echo "1. 编辑模型配置: ${OPENCLAW_CONFIG_DIR}/config/models.yaml"
 echo "2. 编辑渠道配置: ${OPENCLAW_CONFIG_DIR}/config/channels/channel.yaml"
 echo "3. 编辑安全配置: ${OPENCLAW_CONFIG_DIR}/config/security.yaml"
+echo "4. （可选）自定义智能体名称: ${OPENCLAW_CONFIG_DIR}/config/agent.yaml"
 echo ""
 echo "🚀 配置完成后运行部署脚本: ./scripts/deploy.sh"
 echo ""

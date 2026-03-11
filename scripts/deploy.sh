@@ -29,20 +29,40 @@ done
 
 # 函数：安装智能体
 install_agent() {
-    local agent_name=$1
+    local agent_id=$1
     local agent_dir=$2
+    local agent_key=$(echo "$agent_id" | tr '-' '_')
+    local default_name=""
     
-    echo -e "\n🤖 安装 ${agent_name}..."
+    # 从配置文件读取自定义名称
+    if [ -f "${OPENCLAW_CONFIG_DIR}/config/agent.yaml" ]; then
+        custom_name=$(yq e ".agent_names.${agent_key}" "${OPENCLAW_CONFIG_DIR}/config/agent.yaml" 2>/dev/null || echo "")
+    fi
+    
+    # 确定显示名称
+    case $agent_id in
+        pm-chef) default_name="PM大厨" ;;
+        ba-chef) default_name="BA大厨" ;;
+        data-chef) default_name="Data大厨" ;;
+        code-chef) default_name="Code大厨" ;;
+        doc-chef) default_name="Doc大厨" ;;
+        ops-chef) default_name="Ops大厨" ;;
+        *) default_name="$agent_id" ;;
+    esac
+    
+    local agent_name="${custom_name:-$default_name}"
+    
+    echo -e "\n🤖 安装 ${agent_name} (${agent_id})..."
     echo "--------------------------"
     
     # 检查是否已经安装
-    if openclaw agents list | grep -q "$agent_name"; then
+    if openclaw agents list | grep -q "$agent_id"; then
         echo -e "⚠️  ${YELLOW}${agent_name} 已经安装，跳过${NC}"
         return 0
     fi
     
-    # 安装智能体
-    if openclaw agents install "$agent_name" --config "${agent_dir}/config.yaml"; then
+    # 安装智能体，传入自定义名称
+    if openclaw agents install "$agent_id" --config "${agent_dir}/config.yaml" --name "$agent_name"; then
         echo -e "✅ ${GREEN}${agent_name} 安装成功${NC}"
     else
         echo -e "❌ ${RED}${agent_name} 安装失败${NC}"

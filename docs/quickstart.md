@@ -71,6 +71,19 @@ authorization:
     - "your-user-open-id"      # 填入你的用户ID，只允许你自己访问
 ```
 
+#### ④ （可选）智能体名称自定义 `recipes/base/agent.yaml`
+如果需要修改智能体的显示名称，可以编辑这个配置文件：
+```yaml
+agent_names:
+  pm_chef: "PM大厨"       # 项目管理智能体
+  ba_chef: "BA大厨"       # 业务分析智能体
+  data_chef: "Data大厨"   # 数据分析智能体
+  code_chef: "Code大厨"   # 编码开发智能体
+  doc_chef: "Doc大厨"     # 文档处理智能体
+  ops_chef: "Ops大厨"     # 效能运营智能体
+```
+你可以根据自己的喜好修改这些名称，重新部署后会自动生效。
+
 ✅ 配置完成！你已经完成了所有必填项的配置。
 
 ---
